@@ -17,9 +17,9 @@ public class V2Test {
     @Test
     public void test(){
 
-        Configuration configuration = new Configuration().buildMappers(UserMapper.class);
+        Configuration configuration = new Configuration().buildMappers(UserMapper.class).buildInterceptors(new DemoInterceptor());
 
-        SqlSession sqlSession = new SqlSession(configuration, new BaseExecutor(configuration));
+        SqlSession sqlSession = new SqlSession(configuration);
 
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 

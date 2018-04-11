@@ -9,8 +9,8 @@ import com.lijq.mybatis.v2.session.Configuration;
  */
 public class ExecutorFactory {
 
-    private static final String SIMPLE = "SIMPLE";
-    private static final String CACHING = "CACHING";
+    public static final String SIMPLE = "SIMPLE";
+    public static final String CACHING = "CACHING";
 
     public static Executor DEFAULT(Configuration configuration) {
         return get(SIMPLE, configuration);

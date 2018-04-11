@@ -1,6 +1,8 @@
 package com.lijq.mybatis.v2.session;
 
 import com.lijq.mybatis.v2.binding.MapperRegistry;
+import com.lijq.mybatis.v2.executor.Executor;
+import com.lijq.mybatis.v2.executor.ExecutorFactory;
 import com.lijq.mybatis.v2.plugin.Interceptor;
 import com.lijq.mybatis.v2.plugin.InterceptorChain;
 import lombok.Getter;
@@ -46,6 +48,16 @@ public class Configuration {
             addInterceptor(interceptor);
         }
         return this;
+    }
+
+
+    public Executor newExecutor() {
+        return newExecutor(ExecutorFactory.SIMPLE);
+    }
+
+    public Executor newExecutor(String executorType) {
+        Executor executor = ExecutorFactory.get(executorType, this);
+        return (Executor) interceptorChain.pluginAll(executor);
     }
 
 

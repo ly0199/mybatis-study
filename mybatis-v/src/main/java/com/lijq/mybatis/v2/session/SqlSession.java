@@ -14,9 +14,9 @@ public class SqlSession {
     private Configuration configuration;
     private Executor executor;
 
-    public SqlSession(Configuration configuration, Executor executor) {
+    public SqlSession(Configuration configuration) {
         this.configuration = configuration;
-        this.executor = executor;
+        this.executor = configuration.newExecutor();
     }
 
 
